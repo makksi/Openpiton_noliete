@@ -7,11 +7,13 @@
 #   some .bashrc script, to point to the princeton Piton        #
 #   prcessor git repository.                                    #
 #################################################################
+basedir=$(dirname "$BASH_SOURCE")
+source $basedir/.setenv_op
 
 export DV_ROOT=$PITON_ROOT/piton
 export MODEL_DIR=$PITON_ROOT/build
-export HPDCACHE_ROOT=$ARIANE_ROOT/cv-hpdcache
-export HPDCACHE_DIR=../
+#export HPDCACHE_ROOT=$ARIANE_ROOT/cv-hpdcache
+#export HPDCACHE_DIR=../
 
 if [ `uname -s` = "SunOS" ]
 then
@@ -94,7 +96,9 @@ export PERL_CMD="/usr/bin/perl"
 
 # Set path
 
-NEWPATH="$DV_ROOT/tools/bin"
+NEWPATH="$VERILATOR_ROOT/bin"
+
+NEWPATH=$NEWPATH:$DV_ROOT/tools/bin
 
 if [ ! -z $VCS_HOME ]
 then
